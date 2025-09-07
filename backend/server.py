@@ -101,6 +101,12 @@ async def get_status_checks():
 @api_router.post("/summarize-text", response_model=MeetingSummaryResponse)
 async def summarize_meeting_text(input: MeetingSummaryCreate):
     """Summarize meeting content from text input"""
+    # Validate input
+    if not input.title.strip():
+        raise HTTPException(status_code=422, detail="Meeting title is required")
+    if not input.content.strip():
+        raise HTTPException(status_code=422, detail="Meeting content is required")
+    
     try:
         # Initialize LLM Chat with emergent key
         chat = LlmChat(
