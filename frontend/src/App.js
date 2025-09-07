@@ -9,6 +9,7 @@ import { Badge } from "./components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { Upload, FileText, Clock, CheckSquare, Target, Sparkles, Bot, Users, TrendingUp } from "lucide-react";
 import { toast } from "sonner";
+import { Toaster } from "./components/ui/sonner";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
