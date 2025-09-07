@@ -480,6 +480,7 @@ function App() {
           </TabsContent>
         </Tabs>
       </main>
+      <Toaster />
     </div>
   );
 }
