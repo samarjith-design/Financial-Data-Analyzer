@@ -391,7 +391,7 @@ async def get_market_analysis(symbol: str, limit: int = 10):
     """Get recent AI analysis for a symbol"""
     try:
         analyses = await db.market_analysis.find(
-            {"symbol": symbol}
+            {"symbol": symbol}, {"_id": 0}
         ).sort("timestamp", -1).limit(limit).to_list(limit)
         
         parsed_analyses = [parse_from_mongo(analysis) for analysis in analyses]
