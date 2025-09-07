@@ -415,7 +415,7 @@ async def create_price_alert(alert: PriceAlert):
 async def get_price_alerts():
     """Get all price alerts"""
     try:
-        alerts = await db.price_alerts.find().sort("created_at", -1).to_list(100)
+        alerts = await db.price_alerts.find({}, {"_id": 0}).sort("created_at", -1).to_list(100)
         parsed_alerts = [parse_from_mongo(alert) for alert in alerts]
         return {"alerts": parsed_alerts}
         
